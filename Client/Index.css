@@ -1,0 +1,18 @@
+body{
+    background-color: darkslategrey;
+}
+
+
+h1{
+    color: hotpink;
+}
+
+.goat{
+    text-align: center;
+}
+.young{
+    border: 3px solid green;
+}
+.old{
+    border: 3px solid red;
+}
