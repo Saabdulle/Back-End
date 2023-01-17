@@ -2,6 +2,8 @@ const express = require("express"); // Access to the Express library
 const cors = require("cors") // access to the cors library
 
 const {goats, nextId} = require("./goats")
+const logger = require("./logger")
+
 const app = express(); //Make a very basic server using Express.
 //Tell the app what kind of request to listen for and how to handle them.
 
@@ -11,7 +13,7 @@ const app = express(); //Make a very basic server using Express.
 //req -> [cors]-> [API] -> res
 
 app.use(cors())
-
+app.use(logger)
 //Endpoint
 //req = request || res = respond
 
@@ -46,7 +48,7 @@ app.get("/goats/:id", (req, res) => {
 if (goat){
     res.json(goat)
 }else {
-    //Send a status code and the .json send the error message like writen below.
+    //Send a status code and the .json send the error message like written below.
     res.status(404).json({
         error: "Goat does not exist"
     })

@@ -3,7 +3,7 @@ const herd = document.getElementById("herd")
 function createGoatCard(goat){
     //create a card 
    const card = document.createElement("div")
-    // Add a relevent class
+    // Add a relevant class
     card.classList.add("goat")
     //Add some content
     // card.textContent = goat["name"]
