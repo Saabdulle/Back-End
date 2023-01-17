@@ -7,7 +7,7 @@ const app = express(); //Make a very basic server using Express.
 //req = request || res = respond
 
 app.get("/", (req, res) => {
-    res.send("Hello, World!");
+    res.send("Hell0, World!");
 })
 
 module.exports = app //Make the server available to other files
