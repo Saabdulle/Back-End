@@ -12,12 +12,29 @@ const app = express(); //Make a very basic server using Express.
 // })
 app.get("/", (req, res) => {
     res.json({
-        "message": "Hello, World!"
+        "message": "Welcome to the GOAT API!"
     })
 });
 
 app.get("/goats", (req, res) => {
     res.json(goats)
+})
+
+app.get("/goats/:id", (req, res) => {
+    
+    const id = req.params["id"]
+    //Filter the goat list for the relevant goat
+    console.log(req.params["id"])
+    const goat = goats.filter(g => g["id"] == id)[0];
+//Everything in URL come in string and "==" is better to use then "===".
+if (goat){
+    res.json(goat)
+}else {
+    //Send a status code
+    res.status(404).json({
+        error: "Goat does not exist"
+    })
+}
 })
 
 
