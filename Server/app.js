@@ -17,7 +17,15 @@ app.get("/", (req, res) => {
 });
 
 app.get("/goats", (req, res) => {
-    res.json(goats)
+    //Extract query params
+    const { maxAge } = req.query
+
+    if (maxAge){
+        res.json(goats.filter(g => g["age"] <= maxAge))
+    }else {
+        res.json(goats)
+    }
+
 })
 
 app.get("/goats/:id", (req, res) => {
@@ -30,7 +38,7 @@ app.get("/goats/:id", (req, res) => {
 if (goat){
     res.json(goat)
 }else {
-    //Send a status code
+    //Send a status code and the .json send the error message like writen below.
     res.status(404).json({
         error: "Goat does not exist"
     })
